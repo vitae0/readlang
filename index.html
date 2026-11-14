@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101113">
+<meta name="description" content="Dikkat dağıtmayan, kelime çevirili PDF okuyucu.">
+<title>Readlang · Okuyarak öğren</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="bar">
+ <div class="brandline"><button id="homeBtn" class="brand" title="Kitaplığım">readlang<span class="dot">.</span></button><span id="currentTitle" class="book-name">Kitaplığım</span></div>
+ <div class="right">
+  <button id="vocabBtn" class="secondary" title="Sık baktığım kelimeler">Kelimeler</button>
+  <div class="select-wrap"><label for="nativeLang">BENİM DİLİM</label><select id="nativeLang" aria-label="Benim dilim"></select></div>
+  <span class="arrow">←</span>
+  <div class="select-wrap"><label for="bookLang">KİTAP DİLİ</label><select id="bookLang" aria-label="Kitap dili"></select></div>
+ </div>
+</header>
+<main>
+ <section id="homeView" class="home">
+  <div class="eyebrow">KÜTÜPHANE</div>
+  <h1>Oku. Anla. Devam et.</h1>
+  <p class="intro">Bir kelimeye dokun; kısa karşılığını gör. Okumaya devam et.</p>
+  <label id="dropZone" class="drop" for="pdfInput" tabindex="0" role="button">
+   <span class="upload-glyph">↑</span><strong>PDF ekle</strong><small>Seç veya sürükleyip bırak. Kitap cihazında kalır.</small>
+  </label>
+  <input id="pdfInput" type="file" accept=".pdf,application/pdf" hidden>
+  <p id="importStatus" class="status" role="status" aria-live="polite"></p>
+  <div id="bookGrid" class="books"></div>
+  <div id="demos" class="demos"><button id="germanDemo" class="link-button">Almanca örnek metin ↗</button><button id="kurdishDemo" class="link-button">Kurmancî örnek metin ↗</button></div>
+ </section>
+ <section id="readerView" class="reader hidden">
+  <div class="meta"><span id="pageHeading">SAYFA</span><span id="percentLabel"></span></div>
+  <article id="readerText" class="reading" aria-label="Okunan metin"></article>
+  <div class="pager"><button id="prevBtn" class="navbtn">← Önceki</button><div class="slide"><span id="pageLabel"></span><input id="pageSlider" type="range" min="1" max="1" value="1" aria-label="Sayfa"></div><button id="nextBtn" class="navbtn">Sonraki →</button></div>
+ </section>
+</main>
+<div id="backdrop" class="backdrop hidden"></div>
+<aside id="vocabPanel" class="panel" aria-hidden="true">
+ <div class="paneltop"><div><div class="eyebrow">SÖZLÜK</div><h2>Sık baktıkların</h2></div><button id="closePanel" class="xbtn" aria-label="Kapat">×</button></div>
+ <p class="aside-desc">Birden fazla kez açtığın kelimeler burada birikir.</p>
+ <div id="vocabList" class="vocablist"></div>
+ <div class="panelbottom"><button id="exportBtn" class="borderbutton">Dışa aktar ↓</button><button id="importBtn" class="borderbutton">Yedek yükle ↑</button><input id="vocabImport" type="file" accept=".json,application/json" hidden></div>
+</aside>
+<div id="wordPopup" class="popup hidden" role="status"></div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script type="module" src="./app.js"></script>
+</body></html>
