@@ -23,7 +23,7 @@ test('case and Unicode normalization',()=>{
 test('punctuation remains intact after Unicode tokenization',()=>{
  const input='Heute ist schön. Ez diçim!';
  assert.equal(tokenize(input).join(''),input);
- assert.equal(tokenize(input).filter(isWord).length,6);
+ assert.equal(tokenize(input).filter(isWord).length,5);
 });
 test('history is separated per source language',()=>{
  assert.equal(historyKey('de','Haus'),'de:haus');
